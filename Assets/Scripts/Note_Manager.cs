@@ -62,7 +62,6 @@ public class Note_Manager : MonoBehaviour
             else
             {
                 SpawnPos.y = 0;
-                //transform.rotation = Quaternion.Euler(0, 0, 90);
                 if (Where == Line.Right)
                     SpawnPos.x = 5.1f;
                 if (Where == Line.Left)
@@ -96,7 +95,6 @@ public class Note_Manager : MonoBehaviour
             else
             {
                 SpawnPos.y = 0;
-                //transform.rotation = Quaternion.Euler(0, 0, 90);
                 if (Where == 2)
                     SpawnPos.x = 5.1f;
                 if (Where == 6)
