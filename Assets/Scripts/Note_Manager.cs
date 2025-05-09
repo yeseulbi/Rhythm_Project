@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,6 +8,7 @@ public enum Line { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft }
 public class Note_Manager : MonoBehaviour
 {
     public Transform[] judgeLine; // 중심 판정 라인 위치, 위에서부터 시계방향으로 01234567
+    static public List<GameObject>[] NoteList = new List<GameObject>[7];  //노트 리스트
     [SerializeField] GameObject NotePrefab;
     
     [HideInInspector]public int judgeNumber;
@@ -31,7 +33,7 @@ public class Note_Manager : MonoBehaviour
         NoteSpawn(5, Line.UpLeft);
         NoteSpawn(6, Line.DownLeft);
         NoteSpawn(7, Line.UpRight);
-        NoteSpawn(8, Line.DownRight);     */   
+        NoteSpawn(8, Line.DownRight); */   
     }
     void Update()
     {
