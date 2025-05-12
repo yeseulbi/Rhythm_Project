@@ -105,6 +105,7 @@ MonoBehaviour:
   perfectRange: 0.2
   goodRange: 0.5
   missRange: 1
+  NoteSpeed: 5
 --- !u!61 &5381700953969796001
 BoxCollider2D:
   m_ObjectHideFlags: 0
