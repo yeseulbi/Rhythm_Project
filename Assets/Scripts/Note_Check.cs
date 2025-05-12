@@ -14,13 +14,16 @@ public class Note_Check : MonoBehaviour
     Vector3 judgeVec;
 
     float dist;
-    int judgeNumber;
     int Note_Number;
     List<GameObject>[] NoteList = new List<GameObject>[8];
 
+    int judgeNumber;
+    public void Init(int line)
+    {
+        judgeNumber = line;
+    }
     private void Start()
     {
-        judgeNumber = Note_Manager.inst.judgeNumber;
         judgeVec = Note_Manager.inst.judgeLine[judgeNumber].position;
         NoteList[judgeNumber] = Note_Manager.inst.NoteList[judgeNumber];
 
@@ -91,14 +94,14 @@ public class Note_Check : MonoBehaviour
             Debug.Log("Miss!");
             Destroy(gameObject); // 노트 제거
         }
-        Debug.Log("timeToReach" + timeToReach);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
-            Debug.Log("Miss!");
+            Debug.Log(judgeNumber + "Note: " + NoteList[judgeNumber].IndexOf(gameObject));
+            Debug.Log("Miss");
             Destroy(gameObject);
         }
     }
