@@ -63,11 +63,27 @@ public class Note_Manager : MonoBehaviour
         NoteSpawn(11.19f, Line.Left);
         NoteSpawn(11.28f, Line.Right);
     }
-
+    float AudioTimeRemember;
     private void Update()    //update에서 if문 사용
     {
         //Debug.Log("Timer: "+GameManager.GameTimer);
         //Debug.Log("MusicTime: "+ audioSource[Audio].time);
+        if (audioSource[Audio].isPlaying&& !GameManager.MusicOn)
+        {
+            AudioTimeRemember = audioSource[Audio].time;
+            audioSource[Audio].Stop();
+        }
+        else if (!audioSource[Audio].isPlaying && GameManager.MusicOn)
+        {
+            audioSource[Audio].Play();
+            audioSource[Audio].time = AudioTimeRemember; // 이전에 멈춘 시간으로 재생
+        }
+
+        else
+        {
+            Debug.Log("GameTimer: " + audioSource[Audio].time);
+            //Debug.Log("Key: None");
+        }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {

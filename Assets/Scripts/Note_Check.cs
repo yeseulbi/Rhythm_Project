@@ -38,7 +38,7 @@ public class Note_Check : MonoBehaviour
     void Update()
     {
         dist = Vector2.Distance(transform.position, judgeVec);
-        if (gameObject != null)
+        if (gameObject != null&& GameManager.MusicOn)
         {
             transform.Translate(Vector3.up * NoteSpeed * Time.deltaTime);
             //Debug.Log("GameTimer: "+timeToReach);
