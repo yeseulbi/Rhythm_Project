@@ -7,11 +7,14 @@ public class NoteData
 {
     public float hitTime; // 판정선 도달 시간 (오디오 시간 기준)
     public int linePosition;
+    public int spriteIndex; // 추가
     public bool spawned = false;
 }
 
 public class Note_Manager : MonoBehaviour
 {
+    [SerializeField] private Sprite[] noteSprites; // Inspector에서 스프라이트 할당
+    //[SerializeField] private 
     [SerializeField] private AudioSource[] audioSource;
     int Audio=0;  // 오디오 인덱스
     public float MusicTime => audioSource[Audio].time;
@@ -34,12 +37,11 @@ public class Note_Manager : MonoBehaviour
         {
             NoteList[i] = new List<GameObject>();
         }
-
     }
     private void Start()
     {
         NoteSpawn(0,Line.Up);
-        NoteSpawn(1.6f,Line.Right);
+        NoteSpawn(1.6f,Line.UpLeft);
         NoteSpawn(3.4f, Line.Right);
         NoteSpawn(4.9f, Line.Right);
         NoteSpawn(5.7f, Line.Right);
@@ -60,7 +62,6 @@ public class Note_Manager : MonoBehaviour
         NoteSpawn(11.11f, Line.Right);
         NoteSpawn(11.19f, Line.Left);
         NoteSpawn(11.28f, Line.Right);
-
     }
 
     private void Update()    //update에서 if문 사용
@@ -89,54 +90,81 @@ public class Note_Manager : MonoBehaviour
             timeToReach = Note_Check.timeToReach;
             if (!note.spawned && MusicTime >= (note.hitTime - timeToReach))
             {
-                SpawnNote(note.linePosition);
+                SpawnNote(note.linePosition, note.spriteIndex); // spriteIndex 전달
                 note.spawned = true;
             }
         }
+
     }
-    private void SpawnNote(int line)
+    private void SpawnNote(int line, int spriteIndex)
     {
+        // 위치 지정, 생성, judgeNumber 가져오기
         Vector3 spawnPos = GetSpawnPosition(line);
         GameObject obj = Instantiate(NotePrefab, spawnPos, judgeLine[line].rotation);
         obj.GetComponent<Note_Check>().Init(line);
+
+        // 스프라이트 렌더러 변경
+        var sr = obj.GetComponent<SpriteRenderer>();
+        if (sr != null && noteSprites != null && spriteIndex >= 0 && spriteIndex < noteSprites.Length)
+            sr.sprite = noteSprites[spriteIndex];
     }
+
     private Vector3 GetSpawnPosition(int where)
     {
         Vector3 SpawnPos = Vector3.zero;
 
-        if (where == 0 || where == 1 || where == 7)
+        switch (where)
         {
-            SpawnPos.y = 5.1f;
-            if (where == 1)
-                SpawnPos.x = 5.1f;
-            if (where == 7)
-                SpawnPos.x = -5.1f;
-        }
-        else if (where == 3 || where == 4 || where == 5)
-        {
-            SpawnPos.y = -5.1f;
-            if (where == 3)
-                SpawnPos.x = 5.1f;
-            if (where == 5)
-                SpawnPos.x = -5.1f;
-        }
-        else
-        {
-            SpawnPos.y = 0;
-            if (where == 2)
-                SpawnPos.x = 5.1f;
-            if (where == 6)
-                SpawnPos.x = -5.1f;
-        }
+            case 0: // Up
+                SpawnPos.y = 5.1f;
+                break;
 
+            case 1: // UpRight
+                SpawnPos.y = 5.1f;
+                SpawnPos.x = 5.1f;
+                break;
+
+            case 2: // Right
+                SpawnPos.y = 0;
+                SpawnPos.x = 5.1f;
+                break;
+
+            case 3: // DownRight
+                SpawnPos.y = -5.1f;
+                SpawnPos.x = 5.1f;
+                break;
+
+            case 4: // Down
+                SpawnPos.y = -5.1f;
+                break;
+
+            case 5: // DownLeft
+                SpawnPos.y = -5.1f;
+                SpawnPos.x = -5.1f;
+                break;
+
+            case 6: // Left
+                SpawnPos.y = 0;
+                SpawnPos.x = -5.1f;
+                break;
+
+            case 7: // UpLeft
+                SpawnPos.y = 5.1f;
+                SpawnPos.x = -5.1f;
+                break;
+        }
         return SpawnPos;
+    }
+    void NoteSpawn(float time, Line line, int spriteIndex)
+    {
+        allNotes.Add(new NoteData { hitTime = time, linePosition = (int)line, spriteIndex = spriteIndex });
+    }
+    void NoteSpawn(float time, int line, int spriteIndex)
+    {
+        allNotes.Add(new NoteData { hitTime = time, linePosition = line, spriteIndex = spriteIndex });
     }
     void NoteSpawn(float time, Line line)
     {
         allNotes.Add(new NoteData { hitTime = time, linePosition = (int)line });
-    }
-    void NoteSpawn(float time, int line)
-    {
-        allNotes.Add(new NoteData { hitTime = time, linePosition = line });
     }
 }

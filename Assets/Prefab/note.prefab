@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af4eeac5182356d4f84826eafccdf13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transformPrb: {fileID: 0}
   perfectRange: 0.2
   goodRange: 0.5
   missRange: 1

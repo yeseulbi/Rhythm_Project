@@ -1,16 +1,41 @@
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static float GameTimer;
+
     void Start()
     {
-        GameTimer = 0;
+        
     }
 
     void Update()
     {
-        GameTimer = Time.time;
+        
+    }
+
+    [SerializeField]Button[] Rhythm_Btn_Arr = new Button[5];
+    [SerializeField]Image Btn_Background;
+    public void Continue_Btn()
+    {
+        
+    }
+
+    public void Setting_Btn()
+    {
+        
+    }
+
+    public void ReStart_Btn()
+    {
+        SceneManager.LoadScene("SampleScene");  //ÇØ´ç ¾À
+    }
+
+    public void RhythmExit_Btn()
+    {
+        SceneManager.LoadScene("1_Menu_Scene");
     }
 
 }
