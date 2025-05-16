@@ -6,9 +6,7 @@ TagManager:
   tags:
   - Note
   - Line
-  - Perfect
-  - Good
-  - Miss
+  - Door
   layers:
   - Default
   - TransparentFX
