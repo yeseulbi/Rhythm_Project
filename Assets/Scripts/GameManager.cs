@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //ESC 일시 정지 패널
         if(!Btn_Background.gameObject.activeSelf&&Input.GetKeyDown(KeyCode.Escape))
         {
             MusicOn = false; // 음악 정지
@@ -29,9 +30,9 @@ public class GameManager : MonoBehaviour
             Btn_Background.gameObject.SetActive(false); // 버튼 비활성화
             ESC_Panel.SetActive(false); // ESC 패널 비활성화
         }
-
     }
 
+    // ESC 일시 정지 패널 -> 버튼 UI 함수
     public void Continue_Btn()
     {
         Btn_Background.gameObject.SetActive(false); // 버튼 비활성화
