@@ -25,7 +25,7 @@ public class Stage_Manager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow) && StageIndex > 0)
             --StageIndex;
         else if (Input.GetKeyDown(KeyCode.Escape))
-            SceneManager.LoadScene("1_Menu_Scene");
+            SceneManager.LoadScene("Menu_Scene");
 
         //스테이지 선택 코드
         if (Input.GetKeyDown(KeyCode.Z))

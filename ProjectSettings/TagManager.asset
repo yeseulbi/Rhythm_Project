@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Note
   - Line
-  - Door
   layers:
   - Default
   - TransparentFX

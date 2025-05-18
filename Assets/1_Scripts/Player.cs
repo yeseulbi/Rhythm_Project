@@ -1,36 +1,69 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]private GameObject[] NPC; //0. Stage_Door  1. Composer_NPC 2. Choreographer_NPC 3. Costume_NPC
     void Start()
     {
-        
+        NPCIndex = -1;
     }
 
-    private bool isPlayerInDoor = false;
 
+    int NPCIndex;
     private void Update()
     {
-        if (isPlayerInDoor && Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("2_Stage_Scene");
+            if (NPCIndex == 0)
+            {
+                SceneManager.LoadScene("Stage_Scene");
+            }
+            else if (NPCIndex == 1)
+            {
+                Debug.Log("Composer_NPC");
+            }
+            else if (NPCIndex == 2)
+            {
+                Debug.Log("Choreographer_NPC");
+            }
+        }
+        else if (NPCIndex == 3)
+        {
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                Debug.Log("Costume_NPC");
+            }
+            else if (Input.GetKeyDown(KeyCode.C))
+            {
+                Debug.Log("Costume");
+            }
         }
     }
-
+    GameObject Z_press;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Door"))
+        for (int i = 0; i < NPC.Length; i++)
         {
-            isPlayerInDoor = true;
+            if (collision.gameObject == NPC[i])
+            {
+                NPCIndex = i;
+                Z_press = NPC[i].GetComponentInChildren<TextMeshPro>(true).gameObject;
+                if(!Z_press.activeSelf)
+                Z_press.SetActive(true);// Z press 시 입장
+                break;
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Door"))
+        if (collision.gameObject == NPC[NPCIndex])
         {
-            isPlayerInDoor = false;
+            NPCIndex = -1;
+            if (Z_press.activeSelf)
+                Z_press.SetActive(false);// Z press 메시지 제거
         }
     }
 }

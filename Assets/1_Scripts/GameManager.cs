@@ -47,12 +47,12 @@ public class GameManager : MonoBehaviour
     public void ReStart_Btn()
     {
         MusicOn = true;
-        SceneManager.LoadScene("SampleScene");  //ÇØ´ç ¾À
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);  //ÇØ´ç ¾À
     }
 
     public void RhythmExit_Btn()
     {
-        SceneManager.LoadScene("1_Menu_Scene");
+        SceneManager.LoadScene("Menu_Scene");
     }
 
 }
