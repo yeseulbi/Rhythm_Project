@@ -328,6 +328,10 @@ MonoBehaviour:
   noteSprites: []
   audioSource:
   - {fileID: 1373465760}
+  audioClip:
+  - {fileID: 8300000, guid: c156cc362b9851f4b99b111dc2a93b82, type: 3}
+  - {fileID: 8300000, guid: f93d7ee4c53ecfb48811c86fc0aa948c, type: 3}
+  - {fileID: 8300000, guid: f068dd40759afa9458e8ad59ca3ff13e, type: 3}
   judgeLine:
   - {fileID: 324784283}
   - {fileID: 1324525899}

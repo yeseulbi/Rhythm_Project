@@ -5362,7 +5362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.504717, g: 1, b: 0.8595487, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5370,7 +5370,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b9e92a455d705734ca64f70c690be4a9, type: 3}
     m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
@@ -7042,6 +7042,7 @@ MonoBehaviour:
   - {fileID: 389030285}
   - {fileID: 1026158248}
   - {fileID: 918881269}
+  Dialogue: {fileID: 1811767586}
 --- !u!1 &1026158248
 GameObject:
   m_ObjectHideFlags: 0
@@ -7602,7 +7603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1811767587
 Transform:
   m_ObjectHideFlags: 0
@@ -7635,9 +7636,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImageIndex:
-  - {fileID: 1569438489822185118, guid: fb0a7ad6a3b97c041a8043f746cce214, type: 3}
-  - {fileID: -2217278421347805991, guid: deec9c32a0b9b834b8c19fa30bbbea0d, type: 3}
-  - {fileID: 6988781821090483001, guid: 9e2e39ed403b31e4bb37c37ae163115f, type: 3}
+  - {fileID: -6803647813899197873, guid: aa5e1c6ca82600147b561a165bce156f, type: 3}
+  - {fileID: -2924044133521587126, guid: aad956d2424c8f04e971d452ae7636ac, type: 3}
+  - {fileID: 3053210713878490785, guid: 93cfedb905f354b40a471c80aedfb036, type: 3}
+  - {fileID: 8495373784062584970, guid: 97599a0d7ed716d4cb51824e23da9ab7, type: 3}
+  - {fileID: 3272964454725518512, guid: 4801dacd03dcff94da3b4378d030a1df, type: 3}
   DialogueText: {fileID: 2007774334}
   CharacterName: {fileID: 294808125}
 --- !u!1 &1812777929
@@ -7658,7 +7661,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1812777930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7876,8 +7879,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_Font: {fileID: 12800000, guid: b9e92a455d705734ca64f70c690be4a9, type: 3}
+    m_FontSize: 62
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10

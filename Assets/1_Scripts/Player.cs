@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,16 +6,20 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField]private GameObject[] NPC; //0. Stage_Door  1. Composer_NPC 2. Choreographer_NPC 3. Costume_NPC
+    public GameObject Dialogue; //Dialogue_Manager
+    int NPCIndex;
+
+    private void Awake()
+    {
+    }
     void Start()
     {
         NPCIndex = -1;
     }
 
-
-    int NPCIndex;
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (NPCIndex == 0)
             {

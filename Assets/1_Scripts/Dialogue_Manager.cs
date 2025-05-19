@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
-public class DialogueProfile : MonoBehaviour
+public class DialogueProfile 
 {
     public string dialogue;
     public int characterIndex;
@@ -11,45 +12,58 @@ public class DialogueProfile : MonoBehaviour
 
 public class Dialogue_Manager : MonoBehaviour
 {
-    private List<DialogueProfile> DialogueList = new List<DialogueProfile>();
+    public static List<DialogueProfile> DialogueList = new List<DialogueProfile>();
     
     [SerializeField] Sprite[] ImageIndex;
     Image CharacterImage;
     [SerializeField] Text DialogueText, CharacterName;
     GameObject DialogueObject;
 
-    int dialogueCount = 0; //현재 대사 카운트
     int dialogueIndex = 0; //해당 대사 인덱스
 
-    string[] NameString = new string[] { "첫번째", "두번째", "세번째" }; //0. Composer, 1. Choreographer, 2. Costume
+    public static Dialogue_Manager inst;
 
-    void Start()
+    string[] NameString = new string[] { "작곡가", "안무가", "연구원" }; //0. Composer, 1. Choreographer, 2. Costume
+
+    private void Awake()
     {
+        inst = this;
         DialogueObject = GetComponent<GameObject>();
         CharacterImage = GetComponentInChildren<Image>(true);
-
-        //DialogueObject.SetActive(true);
-        
-        SetDialogue("안녕하세요 테스트 1", 0);
-        SetDialogue("반가워요 테스트 2", 1);
-        SetDialogue("테스트 3", 2);
-        SetDialogue("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ", 0);
+        SetDialogue("0", 0);
+        SetDialogue("1", 0);
+        SetDialogue("2", 0);
+        SetDialogue("3", 1);
+        SetDialogue("4", 1);
+        SetDialogue("5", 1);
+        SetDialogue("6", 2);
+        SetDialogue("7", 2);
+        SetDialogue("8", 2);
+        SetDialogue("9", 2);
+    }
+    void Start()
+    {
     }
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.RightArrow))
+        
+    }
+
+    public void Dialog(int openNum, int closeNum)
+    {
+        if (Input.GetKeyUp(KeyCode.RightArrow)&&openNum!=closeNum)
         {
-            foreach(var dialogues in DialogueList)
+            foreach (var dialogues in DialogueList)
             {
-                if (dialogues.index == dialogueCount)
+                if (dialogues.index == openNum)
                 {
                     CharacterImage.sprite = ImageIndex[dialogues.characterIndex];
                     CharacterName.text = NameString[dialogues.characterIndex];
                     DialogueText.text = dialogues.dialogue;
                 }
             }
-            dialogueCount++;
+             openNum++;
         }
     }
 

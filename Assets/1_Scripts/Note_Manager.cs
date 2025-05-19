@@ -16,6 +16,8 @@ public class Note_Manager : MonoBehaviour
     [SerializeField] private Sprite[] noteSprites; // Inspector에서 스프라이트 할당
     //[SerializeField] private 
     [SerializeField] private AudioSource[] audioSource;
+    [SerializeField] private AudioClip[] audioClip; // 오디오 클립 배열
+
     int Audio=0;  // 오디오 인덱스
     public float MusicTime => audioSource[Audio].time;
 
