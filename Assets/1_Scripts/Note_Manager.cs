@@ -40,28 +40,12 @@ public class Note_Manager : MonoBehaviour
     }
     private void Start()
     {
-        NoteSpawn(0,Line.Up);
-        NoteSpawn(1.6f,Line.UpLeft);
-        NoteSpawn(3.4f, Line.Right);
-        NoteSpawn(4.9f, Line.Right);
-        NoteSpawn(5.7f, Line.Right);
-        NoteSpawn(6.6f, Line.Right);
-        NoteSpawn(6.9f, Line.Right);
-        NoteSpawn(7.38f, Line.Right);
-        NoteSpawn(7.78f, Line.Right);
-        NoteSpawn(8.2f, Line.Right);
-        NoteSpawn(8.59f, Line.Right);
-        NoteSpawn(8.9f, Line.Right);
-        NoteSpawn(9.4f, Line.Right);
-        NoteSpawn(9.79f, Line.Right);
-
-        NoteSpawn(10.17f, Line.Right);
-        NoteSpawn(10.55f, Line.Right);
-        NoteSpawn(10.79f, Line.Right);
-        NoteSpawn(11f, Line.Left);
-        NoteSpawn(11.11f, Line.Right);
-        NoteSpawn(11.19f, Line.Left);
-        NoteSpawn(11.28f, Line.Right);
+        NoteSpawn(0, Line.Up);
+        NoteSpawn(2.5f, Line.Left);
+        NoteSpawn(3.0f, Line.Left);
+        NoteSpawn(3.5f, Line.Left);
+        NoteSpawn(4.0f, Line.Left);
+        NoteSpawn(4.5f, Line.Left);
     }
     float AudioTimeRemember;
     private void Update()    //update에서 if문 사용
@@ -78,14 +62,13 @@ public class Note_Manager : MonoBehaviour
             audioSource[Audio].Play();
             audioSource[Audio].time = AudioTimeRemember; // 이전에 멈춘 시간으로 재생
         }
-
-        else
+        /*else
         {
             Debug.Log("GameTimer: " + audioSource[Audio].time);
             //Debug.Log("Key: None");
-        }
+        }*/
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        /*if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("GameTimer: "+audioSource[Audio].time);
             //Debug.Log("Key: Right");
@@ -99,7 +82,7 @@ public class Note_Manager : MonoBehaviour
         {
             Debug.Log("GameTimer: " + audioSource[Audio].time);
             //Debug.Log("Key: Up and Down");
-        }
+        }*/
 
         foreach (var note in allNotes)
         {

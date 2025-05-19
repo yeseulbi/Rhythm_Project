@@ -1,50 +1,61 @@
+using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
+public class DialogueProfile : MonoBehaviour
+{
+    public string dialogue;
+    public int characterIndex;
+    public int index;
+}
 
 public class Dialogue_Manager : MonoBehaviour
 {
+    private List<DialogueProfile> DialogueList = new List<DialogueProfile>();
+    
     [SerializeField] Sprite[] ImageIndex;
     Image CharacterImage;
-    Text DialogueText, CharacterName;
+    [SerializeField] Text DialogueText, CharacterName;
     GameObject DialogueObject;
 
-    string[] NameString = new string[] { "Composer", "Choreographer", "Costume" }; //0. Composer, 1. Choreographer, 2. Costume
-    int DialogueNumber = 0; //현재 실행되는 대사 인덱스
+    int dialogueCount = 0; //현재 대사 카운트
+    int dialogueIndex = 0; //해당 대사 인덱스
+
+    string[] NameString = new string[] { "첫번째", "두번째", "세번째" }; //0. Composer, 1. Choreographer, 2. Costume
 
     void Start()
     {
         DialogueObject = GetComponent<GameObject>();
         CharacterImage = GetComponentInChildren<Image>(true);
-        CharacterName = GetComponentInChildren<Text>(true); //반드시 Name 컴포넌트가 Dialogue 컴포넌트보다 위에 있어야 한다
-        DialogueText = GetComponentInChildren<Text>(true);
 
-        DialogueObject.SetActive(true);
-        if(Input.GetKeyUp(KeyCode.RightArrow))
-        {
-
-        }
+        //DialogueObject.SetActive(true);
         
+        SetDialogue("안녕하세요 테스트 1", 0);
+        SetDialogue("반가워요 테스트 2", 1);
+        SetDialogue("테스트 3", 2);
+        SetDialogue("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ", 0);
     }
 
     void Update()
     {
-        if(DialogueObject)
+        if(Input.GetKeyUp(KeyCode.RightArrow))
         {
-            //SetDialogue("Hello, this is a test dialogue.", 0); // Example usage
+            foreach(var dialogues in DialogueList)
+            {
+                if (dialogues.index == dialogueCount)
+                {
+                    CharacterImage.sprite = ImageIndex[dialogues.characterIndex];
+                    CharacterName.text = NameString[dialogues.characterIndex];
+                    DialogueText.text = dialogues.dialogue;
+                }
+            }
+            dialogueCount++;
         }
     }
 
-    public void SetDialogue(string dialogue, int Character_index, int index)//대사, 캐릭터 인덱스, 대사 순서 인덱스
+    public void SetDialogue(string dialogue, int Character_index)//대사, 캐릭터 인덱스
     {
-        int dialogueNumber = DialogueNumber;
-        if (dialogueNumber == index)
-        {
-            CharacterImage.sprite = ImageIndex[Character_index];
-            CharacterName.text = NameString[Character_index];
-            DialogueText.text = dialogue;
-
-            ++DialogueNumber;
-        }
+        DialogueList.Add(new DialogueProfile { dialogue = dialogue, characterIndex = Character_index, index = dialogueIndex});
+        dialogueIndex++;
     }
 }
