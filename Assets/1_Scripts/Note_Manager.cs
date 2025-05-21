@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum Line { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft }
@@ -18,7 +19,6 @@ public class Note_Manager : MonoBehaviour
     //[SerializeField] private 
     [SerializeField] private AudioSource[] audioSource;
     [SerializeField] private AudioClip[] SoundEffectClip; // 효과음 배열
-    AudioSource EffectaudioSource; // 효과음 오디오 소스
 
     int Audio=0;  // 오디오 인덱스
     public float MusicTime => audioSource[Audio].time;
@@ -38,7 +38,6 @@ public class Note_Manager : MonoBehaviour
     void Awake()
     {
         inst = this;
-        EffectaudioSource = GetComponent<AudioSource>();
         for (int i = 0; i < NoteList_Parents.Length; i++)
         {
             NoteList_Parents[i] = new List<GameObject>();
@@ -55,13 +54,23 @@ public class Note_Manager : MonoBehaviour
         NoteSpawn(3.0f, Line.Left, 0, 0);
         NoteSpawn(3.5f, Line.Left, 0, 0);
         NoteSpawn(4.0f, Line.Left, 0, 0);
-        NoteSpawn(4.5f, Line.Left, 0, 0);
+        NoteSpawn(4.5f, Line.Right, 0, 0);
+        NoteSpawn(5.0f, Line.Right, 0, 0);
+        NoteSpawn(5.5f, Line.Right, 0, 0);
+        NoteSpawn(6.0f, Line.Right, 0, 0);
+        NoteSpawn(6.5f, Line.Down, 0, 0);
+        NoteSpawn(7.0f, Line.Down, 0, 0);
+        NoteSpawn(7.5f, Line.Down, 0, 0);
+        NoteSpawn(8.0f, Line.Down, 0, 0);
+        NoteSpawn(8.5f, Line.Left, 0, 0);
+        NoteSpawn(9.0f, Line.Left, 0, 0);
+        NoteSpawn(9.5f, Line.Down, 0, 0);
+        NoteSpawn(10.0f, Line.Down, 0, 0);
+        NoteSpawn(10.5f, Line.Down, 0, 0);
     }
     float AudioTimeRemember;
     private void Update()    //update에서 if문 사용
     {
-        //Debug.Log("Timer: "+GameManager.GameTimer);
-        //Debug.Log("MusicTime: "+ audioSource[Audio].time);
         if (audioSource[Audio].isPlaying&& !GameManager.MusicOn)
         {
             AudioTimeRemember = audioSource[Audio].time;
@@ -72,27 +81,6 @@ public class Note_Manager : MonoBehaviour
             audioSource[Audio].Play();
             audioSource[Audio].time = AudioTimeRemember; // 이전에 멈춘 시간으로 재생
         }
-        /*else
-        {
-            Debug.Log("GameTimer: " + audioSource[Audio].time);
-            //Debug.Log("Key: None");
-        }*/
-
-        /*if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Debug.Log("GameTimer: "+audioSource[Audio].time);
-            //Debug.Log("Key: Right");
-        }
-        else if(Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Debug.Log("GameTimer: " + audioSource[Audio].time);
-            //Debug.Log("Key: Left");
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Debug.Log("GameTimer: " + audioSource[Audio].time);
-            //Debug.Log("Key: Up and Down");
-        }*/
 
         foreach (var note in allNotes)
         {
@@ -114,10 +102,9 @@ public class Note_Manager : MonoBehaviour
         obj.GetComponent<Note_Check>().Init(line);              // 자식 노트에 judgeNumber 입력
 
         //효과음 변경
-        var AddEffect = obj_Parents.GetComponent<AudioSource>();
-        if (AddEffect != null && SoundEffectClip != null && effectIndex >= 0 && effectIndex < SoundEffectClip.Length)
-            AddEffect.clip= SoundEffectClip[effectIndex]; // 효과음 넣기
-        
+        var AddEffect = obj_Parents.GetComponent <AudioSource>();
+        AddEffect.resource = SoundEffectClip[effectIndex]; // 효과음 넣기
+
         // 스프라이트 렌더러 변경
         var sr = obj.GetComponent<SpriteRenderer>();
         if (sr != null && noteSprites != null && spriteIndex >= 0 && spriteIndex < noteSprites.Length)

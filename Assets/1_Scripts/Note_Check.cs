@@ -24,6 +24,7 @@ public class Note_Check : MonoBehaviour
 
         NoteList[judgeNumber].Add(gameObject);
         Note_Number = NoteList[judgeNumber].IndexOf(gameObject);
+        Debug.Log(judgeNumber + "Note : "+ Note_Number+" / Time : "+Note_Manager.inst.MusicTime);
     }
     void Update()
     {
