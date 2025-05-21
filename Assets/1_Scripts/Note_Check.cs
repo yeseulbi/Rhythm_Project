@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Note_Check : MonoBehaviour
 {
-    public float perfectRange = 0.2f;
-    public float goodRange = 0.5f;
-    public float missRange = 1.0f;
+    float perfectRange = 0.7f;  //기존: 0.2f
+    float goodRange = 1f;   //기존: 0.5f
+    float missRange = 1.5f; //기존: 1f
 
     float dist;
     int Note_Number;
