@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.UI.Image;
 
 public enum Line { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft }
 public class NoteData
@@ -54,16 +56,16 @@ public class Note_Manager : MonoBehaviour
         NoteSpawn(3.0f, Line.Left, 0, 0);
         NoteSpawn(3.5f, Line.Left, 0, 0);
         NoteSpawn(4.0f, Line.Left, 0, 0);
-        NoteSpawn(4.5f, Line.Right, 0, 0);
-        NoteSpawn(5.0f, Line.Right, 0, 0);
-        NoteSpawn(5.5f, Line.Right, 0, 0);
-        NoteSpawn(6.0f, Line.Right, 0, 0);
-        NoteSpawn(6.5f, Line.Down, 0, 0);
-        NoteSpawn(7.0f, Line.Down, 0, 0);
-        NoteSpawn(7.5f, Line.Down, 0, 0);
-        NoteSpawn(8.0f, Line.Down, 0, 0);
-        NoteSpawn(8.5f, Line.Left, 0, 0);
-        NoteSpawn(9.0f, Line.Left, 0, 0);
+        NoteSpawn(4.5f, Line.UpRight, 0, 0);
+        NoteSpawn(5.0f, Line.UpRight, 0, 0);
+        NoteSpawn(5.5f, Line.UpRight, 0, 0);
+        NoteSpawn(6.0f, Line.UpRight, 0, 0);
+        NoteSpawn(6.5f, Line.UpLeft, 0, 0);
+        NoteSpawn(7.0f, Line.UpLeft, 0, 0);
+        NoteSpawn(7.5f, Line.DownRight, 0, 0);
+        NoteSpawn(8.0f, Line.DownRight, 0, 0);
+        NoteSpawn(8.5f, Line.DownLeft, 0, 0);
+        NoteSpawn(9.0f, Line.DownLeft, 0, 0);
         NoteSpawn(9.5f, Line.Down, 0, 0);
         NoteSpawn(10.0f, Line.Down, 0, 0);
         NoteSpawn(10.5f, Line.Down, 0, 0);
@@ -95,8 +97,8 @@ public class Note_Manager : MonoBehaviour
     private void SpawnNote(int line, int spriteIndex, int effectIndex)
     {
         // 위치 지정, 생성, judgeNumber 가져오기
-        Vector3 spawnPos = GetSpawnPosition(line);
-        GameObject obj_Parents = Instantiate(NotePrefab_Parents, spawnPos, judgeLine[line].rotation);   // 부모 노트 생성(transform 조정, 이펙트/효과음 제어)
+        Vector3 SpawnPos = -judgeLine[line].up * 5.1f;
+        GameObject obj_Parents = Instantiate(NotePrefab_Parents, SpawnPos, judgeLine[line].rotation);   // 부모 노트 생성(transform 조정, 이펙트/효과음 제어)
         GameObject obj = Instantiate(NotePrefab, obj_Parents.transform);                                // 자식 노트 생성(SpriteRenderer, 판정 제어)
         obj_Parents.GetComponent<Note_Parents>().Init(line);    // 부모 노트에 judgeNumber 입력
         obj.GetComponent<Note_Check>().Init(line);              // 자식 노트에 judgeNumber 입력
@@ -112,52 +114,6 @@ public class Note_Manager : MonoBehaviour
 
     }
 
-    private Vector3 GetSpawnPosition(int where)
-    {
-        Vector3 SpawnPos = Vector3.zero;
-
-        switch (where)
-        {
-            case 0: // Up
-                SpawnPos.y = 5.1f;
-                break;
-
-            case 1: // UpRight
-                SpawnPos.y = 5.1f;
-                SpawnPos.x = 5.1f;
-                break;
-
-            case 2: // Right
-                SpawnPos.y = 0;
-                SpawnPos.x = 5.1f;
-                break;
-
-            case 3: // DownRight
-                SpawnPos.y = -5.1f;
-                SpawnPos.x = 5.1f;
-                break;
-
-            case 4: // Down
-                SpawnPos.y = -5.1f;
-                break;
-
-            case 5: // DownLeft
-                SpawnPos.y = -5.1f;
-                SpawnPos.x = -5.1f;
-                break;
-
-            case 6: // Left
-                SpawnPos.y = 0;
-                SpawnPos.x = -5.1f;
-                break;
-
-            case 7: // UpLeft
-                SpawnPos.y = 5.1f;
-                SpawnPos.x = -5.1f;
-                break;
-        }
-        return SpawnPos;
-    }
     void NoteSpawn(float time, Line line, int spriteIndex, int EftIndex)
     {
         allNotes.Add(new NoteData { hitTime = time, linePosition = (int)line, spriteIndex = spriteIndex, effectIndex = EftIndex });
