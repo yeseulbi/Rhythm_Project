@@ -3,20 +3,15 @@ using UnityEngine;
 
 public class Note_Check : MonoBehaviour
 {
-    //public Transform transformPrb;
-    static public float timeToReach;
-
     public float perfectRange = 0.2f;
     public float goodRange = 0.5f;
     public float missRange = 1.0f;
-    [SerializeField]float NoteSpeed=5f;
-
-    Vector3 judgeVec;
 
     float dist;
     int Note_Number;
     List<GameObject>[] NoteList = new List<GameObject>[8];
 
+    Vector3 judgeVec;
     int judgeNumber;
     public void Init(int line)
     {
@@ -27,23 +22,12 @@ public class Note_Check : MonoBehaviour
         judgeVec = Note_Manager.inst.judgeLine[judgeNumber].position;
         NoteList[judgeNumber] = Note_Manager.inst.NoteList[judgeNumber];
 
-        //노트까지 도달하는 데에 얼마나 걸리는 지
-        float distance = Vector2.Distance(transform.position, judgeVec);
-        timeToReach = distance / NoteSpeed;
-
-        //transformPrb = GetComponent<Transform>(); 
         NoteList[judgeNumber].Add(gameObject);
         Note_Number = NoteList[judgeNumber].IndexOf(gameObject);
     }
     void Update()
     {
         dist = Vector2.Distance(transform.position, judgeVec);
-        if (gameObject != null&& GameManager.MusicOn)
-        {
-            transform.Translate(Vector3.up * NoteSpeed * Time.deltaTime);
-            //Debug.Log("GameTimer: "+timeToReach);
-            //Debug.Log("이동");
-        }
         // 방향은 각 노트에 따라 다르게
         if (Note_Number==0||(Note_Number> 0 &&NoteList[judgeNumber][Note_Number-1]==null))
         {
