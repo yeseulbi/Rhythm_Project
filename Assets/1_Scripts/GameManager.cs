@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool MusicOn = true;
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -39,11 +39,6 @@ public class GameManager : MonoBehaviour
         ESC_Panel.SetActive(false); // ESC 패널 비활성화
     }
 
-    public void Setting_Btn()
-    {
-        
-    }
-
     public void ReStart_Btn()
     {
         MusicOn = true;
@@ -54,5 +49,34 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu_Scene");
     }
+    public void Setting_Btn()
+    {
+        
+    }
 
+    /////////////////////////////Setting Btn 0.Graphic 1.Sound 2.System 3.GameOff 4.Close
+    
+    // 0.Graphic
+    public void Graphic_Btn()
+    {
+        Debug.Log("Graphic Button Clicked");
+    }
+    
+    // 1.Sound
+    public void Sound_Btn()
+    {
+        Debug.Log("Sound Button Clicked");
+    }
+    
+    // 2.System
+    public void System_Btn()
+    {
+        Debug.Log("System Button Clicked");
+    }
+    
+    // 3.GameOff
+    public void GameOff_Btn()
+    {
+        Application.Quit();
+    }
 }
