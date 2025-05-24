@@ -1,18 +1,18 @@
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField] GameObject ESC_Panel;
     [SerializeField]Image Btn_Background;
+    [SerializeField] AudioSource Music;
 
     public static bool MusicOn = true;
     void Start()
     {
-
+        MusicOn = true;
+        Music.Play(); // À½¾Ç Àç»ý
     }
 
     void Update()

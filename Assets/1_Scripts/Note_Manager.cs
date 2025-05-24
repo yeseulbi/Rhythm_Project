@@ -1,9 +1,5 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.UI.Image;
 
 public enum Line { Up, UpRight, Right, DownRight, Down, DownLeft, Left, UpLeft }
 public class NoteData

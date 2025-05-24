@@ -6660,9 +6660,23 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: "\uCC3D \uBAA8\uB4DC"
       m_Image: {fileID: 0}
+    - m_Text: "\uD14C\uB450\uB9AC \uC5C6\uB294 \uCC3D \uBAA8\uB4DC"
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1558277220}
+        m_TargetAssemblyTypeName: Stt_Graphic, Assembly-CSharp
+        m_MethodName: SetFullScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &258634104
 MonoBehaviour:
@@ -7147,13 +7161,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 409816109}
   m_HandleRect: {fileID: 1128469806}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1354103209}
+        m_TargetAssemblyTypeName: Stt_Sound, Assembly-CSharp
+        m_MethodName: SetMenuVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &319312773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8288,13 +8314,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1962018775}
   m_HandleRect: {fileID: 1180302206}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.0001
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1354103209}
+        m_TargetAssemblyTypeName: Stt_Sound, Assembly-CSharp
+        m_MethodName: SetSoundEffectVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &434417322
 GameObject:
   m_ObjectHideFlags: 0
@@ -12121,7 +12159,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1558277220}
+        m_TargetAssemblyTypeName: Stt_Graphic, Assembly-CSharp
+        m_MethodName: SetFullScreenSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1076547058
 MonoBehaviour:
@@ -13311,6 +13361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354103208}
+  - component: {fileID: 1354103209}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -13342,6 +13393,23 @@ Transform:
   - {fileID: 433399465}
   m_Father: {fileID: 245410539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354103209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354103207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c8830d563051f4597e72b7d58d72d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Main: {fileID: 1854282529}
+  Music: {fileID: 1774908196}
+  Menu: {fileID: 314911394}
+  SoundEffect: {fileID: 433399466}
+  mixer: {fileID: 24100000, guid: 86db66289839afa418f0cac67d55038e, type: 2}
 --- !u!1 &1357824257
 GameObject:
   m_ObjectHideFlags: 0
@@ -14112,6 +14180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1558277219}
+  - component: {fileID: 1558277220}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -14145,6 +14214,21 @@ Transform:
   - {fileID: 957682357}
   m_Father: {fileID: 245410539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1558277220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558277218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe330ed208eed744aa8659701814a7cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScreenSize: {fileID: 1076547057}
+  FullScreen: {fileID: 258634103}
+  Frame: {fileID: 2040344026}
 --- !u!1 &1563244076
 GameObject:
   m_ObjectHideFlags: 0
@@ -15275,13 +15359,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 205735740}
   m_HandleRect: {fileID: 1800986457}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: 0.0001
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1354103209}
+        m_TargetAssemblyTypeName: Stt_Sound, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1778683850
 GameObject:
   m_ObjectHideFlags: 0
@@ -16048,11 +16144,23 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1354103209}
+        m_TargetAssemblyTypeName: Stt_Sound, Assembly-CSharp
+        m_MethodName: SetMainVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1870653138
 GameObject:
   m_ObjectHideFlags: 0
@@ -17119,7 +17227,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1558277220}
+        m_TargetAssemblyTypeName: Stt_Graphic, Assembly-CSharp
+        m_MethodName: SetFrameRate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &2040344027
 MonoBehaviour:

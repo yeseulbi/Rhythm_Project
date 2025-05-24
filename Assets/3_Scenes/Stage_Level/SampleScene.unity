@@ -2279,6 +2279,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ESC_Panel: {fileID: 1286584276}
   Btn_Background: {fileID: 1328125789}
+  Music: {fileID: 1373465760}
+  mixer: {fileID: 0}
 --- !u!4 &897884904
 Transform:
   m_ObjectHideFlags: 0
@@ -2791,7 +2793,7 @@ AudioSource:
   m_GameObject: {fileID: 1373465759}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4245910534436687412, guid: 86db66289839afa418f0cac67d55038e, type: 2}
   m_audioClip: {fileID: 8300000, guid: c99610493d64b2549b3a4a23dbb4803c, type: 3}
   m_Resource: {fileID: 8300000, guid: c99610493d64b2549b3a4a23dbb4803c, type: 3}
   m_PlayOnAwake: 1
